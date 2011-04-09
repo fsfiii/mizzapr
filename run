@@ -1,0 +1,28 @@
+NAME="mizzapr wordcount - off the hizzook ruby dsl example"
+PROJ=mizzapr_wc
+
+INPUT=/user/fsfiii/input.tsv
+OUTPUT=output/$PROJ
+
+MIZZAPR=mizzapr.rb
+
+MAPPER=${PROJ}-mapper.rb
+REDUCER=${PROJ}-reducer.rb
+REDUCERS=1
+
+#TIMEOUT=3600000 # number of milliseconds - 60 minutes (default 10 minutes)
+
+RUBY=/usr/local/ruby19/bin/ruby
+
+hadoop fs -rmr $OUTPUT
+
+exec hadoop jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-*.jar \
+    -D mapred.job.name="$NAME" \
+    -D mapred.reduce.tasks=$REDUCERS \
+    -input $INPUT \
+    -output $OUTPUT \
+    -file $MIZZAPR \
+    -mapper "$RUBY ${MAPPER##*/}" \
+    -file $MAPPER \
+    -reducer "$RUBY ${REDUCER##*/}" \
+    -file $REDUCER
