@@ -1,7 +1,7 @@
-require_relative 'mizzapr'
+require 'mizzapr'
 
 aggregate_sum :word, :count
 
 reduce_finish do |rec|
-  emit [rec[:word], rec[:count]]
+  emit rec[:word], rec[:count]
 end

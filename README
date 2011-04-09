@@ -22,7 +22,7 @@ map_filter do |rec|
 end
 
 map_process do |rec|
-  emit [rec[:key], rec[:name], rec[:phone], rec[:age].to_i - 1]
+  emit rec[:key], rec[:name], rec[:phone], rec[:age].to_i - 1
 end
 
 # canonical map/reduce wordcount - need to simplify
@@ -32,7 +32,7 @@ end
 require_relative 'mizzapr'
 
 map_process do |rec|
-  rec.split.each { |word| emit [word.downcase, 1] }
+  rec.split.each { |word| emit word.downcase, 1 }
 end
 
 # reducer
@@ -42,7 +42,7 @@ require_relative 'mizzapr'
 aggregate_sum :word, :count
 
 reduce_finish do |rec|
-  emit [rec[:word], rec[:count]]
+  emit rec[:word], rec[:count]
 end
 
 

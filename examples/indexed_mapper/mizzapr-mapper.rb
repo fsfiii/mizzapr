@@ -1,4 +1,4 @@
-require_relative 'mizzapr'
+require 'mizzapr'
 
 index_for phone: 0
 index_for key:   3
@@ -10,5 +10,5 @@ map_filter do |rec|
 end
 
 map_process do |rec|
-  emit [rec[:key], rec[:name], rec[:phone], rec[:age].to_i - 1]
+  emit rec[:key], rec[:name], rec[:phone], rec[:age].to_i - 1
 end

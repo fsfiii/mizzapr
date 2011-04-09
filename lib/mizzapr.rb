@@ -131,7 +131,7 @@ def self.read_in line
   @data << line.chomp.split(/\t/)
 end
 
-def self.emit record
+def self.emit *fields
   # add combiner functionality
-  puts record.join("\t")
+  puts fields.join("\t")
 end
