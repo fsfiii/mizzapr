@@ -2,9 +2,12 @@ mizzapr
 
 A rockin' ruby DSL for map/reduce.  Have fun and kick java out the door.
 
-Is there any demand for this sort of thing?
+Is there any demand for this sort of thing?  Mizappr is a only experimental
+right now as I'm playing with ways to scale out the human side of
+map/reduce development.  So *please* let me know if you're interested
+in seeing more.
 
-example usage:
+example code:
 
 # map-only job to do filtering and processing based on fields
 require_relative 'mizzapr'
@@ -22,7 +25,7 @@ map_process do |rec|
   emit [rec[:key], rec[:name], rec[:phone], rec[:age].to_i - 1]
 end
 
-# canonical map/reduce wordcount
+# canonical map/reduce wordcount - need to simplify
 
 # mapper
 
