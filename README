@@ -2,7 +2,7 @@ mizzapr
 
 A rockin' ruby DSL for map/reduce.  Have fun and kick java out the door.
 
-Is there any demand for this sort of thing?  Mizappr is a only experimental
+Is there any demand for this sort of thing?  Mizzapr is a only experimental
 right now as I'm playing with ways to scale out the human side of
 map/reduce development.  So *please* let me know if you're interested
 in seeing more.
